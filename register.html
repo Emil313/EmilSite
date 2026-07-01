@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Корочки.есть</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Корочки.<span>есть</span></a>
+        </div>
+    </nav>
+
+    <div class="container mt-5" style="max-width: 500px;">
+        <div class="card shadow-sm">
+            <div class="card-body p-4 p-md-5">
+                <h2 class="card-title text-center mb-4">Регистрация</h2>
+                <form id="registerForm">
+                    <div class="mb-3">
+                        <label class="form-label">Логин (латиница, цифры, >=6)</label>
+                        <input type="text" class="form-control" id="login" required pattern="[a-zA-Z0-9]{6,}">
+                        <div class="invalid-feedback">Логин должен содержать только латиницу и цифры, минимум 6 символов</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Пароль (>=8 символов)</label>
+                        <input type="password" class="form-control" id="password" required minlength="8">
+                        <div class="invalid-feedback">Пароль должен быть не менее 8 символов</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Подтверждение пароля</label>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                        <div class="invalid-feedback">Пароли не совпадают</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">ФИО (кириллица, пробелы)</label>
+                        <input type="text" class="form-control" id="fullName" required pattern="[А-Яа-яЁё\s]+">
+                        <div class="invalid-feedback">Только кириллица и пробелы</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Телефон 8(XXX)XXX-XX-XX</label>
+                        <input type="text" class="form-control" id="phone" required pattern="8\(\d{3}\)\d{3}-\d{2}-\d{2}" placeholder="8(999)123-45-67">
+                        <div class="invalid-feedback">Формат: 8(XXX)XXX-XX-XX</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                        <div class="invalid-feedback">Некорректный email</div>
+                    </div>
+
+                    <div id="registerError" class="alert alert-danger d-none"></div>
+
+                    <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
+
+                    <p class="text-center mt-3">
+                        Уже есть аккаунт? <a href="login.html" class="text-primary">Войти</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
