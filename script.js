@@ -1,4 +1,3 @@
-// ========== Хранилище ==========
 const STORAGE_KEYS = {
     users: 'korochki_users',
     applications: 'korochki_applications',
@@ -17,7 +16,6 @@ const db = {
     }
 };
 
-// ========== Инициализация тестовых данных ==========
 function initTestData() {
     const users = db.getUsers();
     if (users.length === 0) {
@@ -75,7 +73,6 @@ function initTestData() {
 
 initTestData();
 
-// ========== Вспомогательные функции ==========
 function getCurrentUser() {
     return db.getCurrentUser();
 }
@@ -92,7 +89,6 @@ function checkAuth() {
     return true;
 }
 
-// ========== Регистрация ==========
 if (document.getElementById('registerForm')) {
     document.getElementById('registerForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -157,7 +153,6 @@ function showError(element, message) {
     element.classList.remove('d-none');
 }
 
-// ========== Авторизация ==========
 if (document.getElementById('loginForm')) {
     document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -174,7 +169,6 @@ if (document.getElementById('loginForm')) {
         if (user) {
             db.setCurrentUser(login);
             
-            // Если админ, перенаправляем в админку
             if (login === 'Admin') {
                 window.location.href = 'admin.html';
             } else {
@@ -186,10 +180,9 @@ if (document.getElementById('loginForm')) {
     });
 }
 
-// ========== Просмотр заявок ==========
 if (document.getElementById('applicationsList')) {
     if (!checkAuth()) {
-        // Перенаправление уже выполнено в checkAuth
+        
     }
 
     const currentUser = getCurrentUser();
@@ -246,10 +239,9 @@ function submitReview(appId) {
     location.reload();
 }
 
-// ========== Новая заявка ==========
 if (document.getElementById('newApplicationForm')) {
     if (!checkAuth()) {
-        // Перенаправление уже выполнено
+        
     }
 
     document.getElementById('newApplicationForm').addEventListener('submit', function(e) {
@@ -284,7 +276,6 @@ if (document.getElementById('newApplicationForm')) {
     });
 }
 
-// ========== Админ-панель ==========
 if (document.getElementById('adminTableBody')) {
     const currentUser = getCurrentUser();
     const errorDiv = document.getElementById('adminError');
@@ -336,7 +327,6 @@ function changeStatus(appId, newStatus) {
     renderAdminTable();
 }
 
-// ========== Выход ==========
 document.addEventListener('DOMContentLoaded', function() {
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
@@ -356,7 +346,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Проверка для страниц, требующих авторизации
     const protectedPages = ['applications.html', 'new-application.html'];
     const currentPage = window.location.pathname.split('/').pop();
     if (protectedPages.includes(currentPage)) {
@@ -366,28 +355,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ========== СЛАЙДЕР ==========
 document.addEventListener('DOMContentLoaded', function() {
-    const track = document.getElementById('sliderTrack');
-    const prevBtn = document.getElementById('sliderPrev');
-    const nextBtn = document.getElementById('sliderNext');
-    const dots = document.querySelectorAll('.dot');
+    var track = document.getElementById('sliderTrack');
+    var prevBtn = document.getElementById('sliderPrev');
+    var nextBtn = document.getElementById('sliderNext');
+    var dots = document.querySelectorAll('.dot');
     
-    // Если слайдера нет на странице - выходим
     if (!track) return;
 
-    let currentIndex = 0;
-    const totalSlides = dots.length;
-    let autoplayInterval;
+    var currentIndex = 0;
+    var totalSlides = dots.length;
+    var autoplayInterval;
 
     function goToSlide(index) {
         if (index < 0) index = totalSlides - 1;
         if (index >= totalSlides) index = 0;
         currentIndex = index;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        track.style.transform = 'translateX(-' + currentIndex * 100 + '%)';
         
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
+        dots.forEach(function(dot, i) {
+            if (i === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
         });
     }
 
@@ -411,7 +402,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // События кнопок
     if (prevBtn) {
         prevBtn.addEventListener('click', function() {
             prevSlide();
@@ -426,21 +416,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // События точек
-    dots.forEach((dot, index) => {
+    dots.forEach(function(dot, index) {
         dot.addEventListener('click', function() {
             goToSlide(index);
             startAutoplay();
         });
     });
 
-    // Пауза при наведении
-    const sliderContainer = document.getElementById('mainSlider');
+    var sliderContainer = document.getElementById('mainSlider');
     if (sliderContainer) {
         sliderContainer.addEventListener('mouseenter', stopAutoplay);
         sliderContainer.addEventListener('mouseleave', startAutoplay);
     }
 
-    // Запуск автопрокрутки
     startAutoplay();
 });

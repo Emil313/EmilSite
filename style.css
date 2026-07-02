@@ -1,35 +1,60 @@
-/* ===== ОБЩИЕ СТИЛИ ===== */
 body {
     background: #f5f7fa;
     font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
 }
 
-/* ===== НАВБАР ===== */
+
 .navbar {
     background: #ffffff !important;
     border-bottom: 2px solid #e8ecf1;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    padding: 14px 0;
+    padding: 12px 0;
 }
 .navbar-brand {
-    color: #2c3e50 !important;
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: -0.3px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    color: #2c3e50 !important;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+    text-decoration: none;
 }
-.navbar-brand span {
+
+.navbar-brand .brand-name {
+    font-weight: 700;
+    color: #2c3e50;
+}
+.navbar-brand .brand-dot {
     color: #4a90d9;
+    font-weight: 700;
 }
-/* Стили для логотипа-картинки */
+.navbar-brand .brand-end {
+    color: #4a90d9;
+    font-weight: 700;
+}
+.navbar-brand .brand-text {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+
 .logo-img {
-    height: 45px;
+    height: 50px;
     width: auto;
-    border-radius: 8px;
     display: block;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(74, 144, 217, 0.15);
+    border: 2px solid rgba(74, 144, 217, 0.1);
+    transition: all 0.3s ease;
+    filter: brightness(1.02) contrast(1.05);
 }
+.logo-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 20px rgba(74, 144, 217, 0.25);
+}
+
 .navbar .nav-link {
     color: #5a6a7a !important;
     font-weight: 500;
@@ -49,7 +74,7 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(44, 62, 80, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ===== ЗАГОЛОВКИ ===== */
+
 h1 {
     color: #2c3e50;
     font-weight: 700;
@@ -68,7 +93,7 @@ h2 {
     font-weight: 400;
 }
 
-/* ===== СЛАЙДЕР ===== */
+
 .slider-container {
     position: relative;
     width: 100%;
@@ -126,7 +151,7 @@ h2 {
     margin-top: 12px;
 }
 
-/* Разные фоны для слайдов */
+
 .slider-slide:nth-child(1) {
     background: linear-gradient(135deg, #e3eef9, #c5d9e8);
 }
@@ -137,7 +162,7 @@ h2 {
     background: linear-gradient(135deg, #f0edf5, #d9d5e8);
 }
 
-/* Кнопки слайдера */
+
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -169,7 +194,7 @@ h2 {
     right: 16px;
 }
 
-/* Индикаторы слайдера */
+
 .slider-indicators {
     position: absolute;
     bottom: 16px;
@@ -198,7 +223,7 @@ h2 {
     background: rgba(255,255,255,0.8);
 }
 
-/* ===== КАРТОЧКИ ===== */
+
 .card {
     border: none;
     border-radius: 16px;
@@ -212,7 +237,7 @@ h2 {
     letter-spacing: -0.3px;
 }
 
-/* ===== ФОРМЫ ===== */
+
 .form-label {
     color: #4a5a6a;
     font-weight: 500;
@@ -239,7 +264,7 @@ h2 {
     font-size: 0.8rem;
 }
 
-/* ===== КНОПКИ НА ГЛАВНОЙ СТРАНИЦЕ (ЗАЛИТЫЕ С БЕЛЫМ ТЕКСТОМ) ===== */
+
 .btn-custom-primary {
     background: #4a90d9;
     color: #ffffff !important;
@@ -300,7 +325,7 @@ h2 {
     text-decoration: none;
 }
 
-/* ===== КНОПКИ НА ДРУГИХ СТРАНИЦАХ ===== */
+
 .btn-primary {
     background: #4a90d9;
     border: none;
@@ -333,7 +358,7 @@ h2 {
     box-shadow: 0 6px 24px rgba(92, 184, 122, 0.3);
 }
 
-/* Кнопки на странице заявок */
+
 #applicationsList .btn-primary {
     padding: 7px 20px;
     font-size: 0.85rem;
@@ -343,7 +368,7 @@ h2 {
     box-shadow: 0 6px 20px rgba(74, 144, 217, 0.25);
 }
 
-/* Кнопки в админке */
+
 .btn-warning {
     background: #e8a838;
     border: none;
@@ -368,7 +393,7 @@ h2 {
     box-shadow: 0 4px 16px rgba(92, 184, 122, 0.3);
 }
 
-/* ===== БЭЙДЖИ (статусы) ===== */
+
 .badge {
     padding: 6px 16px;
     border-radius: 30px;
@@ -389,7 +414,7 @@ h2 {
     background: #a0b0c0 !important;
 }
 
-/* ===== ТАБЛИЦЫ ===== */
+
 .table {
     border-radius: 12px;
     overflow: hidden;
@@ -417,7 +442,7 @@ h2 {
     background: #f8f9fb;
 }
 
-/* ===== АЛЕРТЫ ===== */
+
 .alert-danger {
     background: #fef2f0;
     border: 1px solid #fadbd8;
@@ -440,7 +465,7 @@ h2 {
     text-decoration: underline;
 }
 
-/* ===== ССЫЛКИ ===== */
+
 .text-primary {
     color: #4a90d9 !important;
     text-decoration: none;
@@ -458,7 +483,7 @@ h2 {
     color: #3a7bc8;
 }
 
-/* ===== КАРТОЧКИ ЗАЯВОК ===== */
+
 #applicationsList .card {
     border-radius: 14px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
@@ -479,12 +504,12 @@ h2 {
     color: #3a4a5a;
 }
 
-/* ===== АДАПТИВНОСТЬ ===== */
+
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.3rem; }
     .navbar-brand { font-size: 1.2rem; }
-    .logo-img { height: 35px; }
+    .logo-img { height: 40px; }
     
     .btn-custom-primary, 
     .btn-custom-success, 
@@ -500,7 +525,6 @@ h2 {
         margin-right: 0 !important;
     }
 
-    /* Слайдер на мобилках */
     .slider-slide .slide-content h3 {
         font-size: 1.3rem;
     }
@@ -519,7 +543,6 @@ h2 {
     .slider-btn.prev { left: 8px; }
     .slider-btn.next { right: 8px; }
     
-    /* Страница заявок */
     .d-flex.justify-content-between {
         flex-direction: column;
         align-items: stretch !important;
@@ -530,7 +553,6 @@ h2 {
         text-align: center;
     }
     
-    /* Таблица админки */
     .table { font-size: 0.82rem; }
     .table thead th, .table td { padding: 8px 10px; }
     .btn-warning, #adminContent .btn-success { font-size: 0.7rem; padding: 4px 10px; }
@@ -544,5 +566,5 @@ h2 {
     .slider-slide .slide-content p { font-size: 0.8rem; }
     .slider-slide .slide-badge { font-size: 0.7rem; padding: 4px 14px; }
     .slider-container { margin: 15px auto; border-radius: 12px; }
-    .logo-img { height: 30px; }
+    .logo-img { height: 35px; }
 }
