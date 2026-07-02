@@ -365,3 +365,82 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// ========== СЛАЙДЕР ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('sliderTrack');
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    const dots = document.querySelectorAll('.dot');
+    
+    // Если слайдера нет на странице - выходим
+    if (!track) return;
+
+    let currentIndex = 0;
+    const totalSlides = dots.length;
+    let autoplayInterval;
+
+    function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(nextSlide, 4000);
+    }
+
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    }
+
+    // События кнопок
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            prevSlide();
+            startAutoplay();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            nextSlide();
+            startAutoplay();
+        });
+    }
+
+    // События точек
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function() {
+            goToSlide(index);
+            startAutoplay();
+        });
+    });
+
+    // Пауза при наведении
+    const sliderContainer = document.getElementById('mainSlider');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', stopAutoplay);
+        sliderContainer.addEventListener('mouseleave', startAutoplay);
+    }
+
+    // Запуск автопрокрутки
+    startAutoplay();
+});

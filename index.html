@@ -10,8 +10,14 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Корочки.<span>есть</span></a>
-            <div class="collapse navbar-collapse">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.jpg" alt="Корочки.есть" class="logo-img">
+                Корочки.<span>есть</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="login.html">Вход</a></li>
                     <li class="nav-item"><a class="nav-link" href="register.html">Регистрация</a></li>
@@ -20,9 +26,48 @@
         </div>
     </nav>
 
-    <div class="container text-center mt-5 pt-3">
+    <div class="container text-center mt-4">
         <h1>Добро пожаловать на портал «Корочки.есть»</h1>
         <p class="lead">Информационная система для записи на онлайн курсы ДПО</p>
+    </div>
+
+    <!-- ===== СЛАЙДЕР ===== -->
+    <div class="slider-container" id="mainSlider">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slider-slide">
+                <div class="slide-content">
+                    <h3>Онлайн-образование</h3>
+                    <p>Проходите курсы ДПО в удобное время из любой точки мира</p>
+                    <span class="slide-badge">Доступно 24/7</span>
+                </div>
+            </div>
+            <div class="slider-slide">
+                <div class="slide-content">
+                    <h3>Сертификаты и дипломы</h3>
+                    <p>Получите официальные документы по окончании обучения</p>
+                    <span class="slide-badge">Государственный образец</span>
+                </div>
+            </div>
+            <div class="slider-slide">
+                <div class="slide-content">
+                    <h3>Опытные преподаватели</h3>
+                    <p>Обучение от практикующих экспертов в своих областях</p>
+                    <span class="slide-badge">100+ экспертов</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="slider-btn prev" id="sliderPrev">‹</button>
+        <button class="slider-btn next" id="sliderNext">›</button>
+
+        <div class="slider-indicators" id="sliderIndicators">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+        </div>
+    </div>
+
+    <div class="container text-center mt-4">
         <div class="mt-4">
             <a href="login.html" class="btn-custom-primary me-2">Войти</a>
             <a href="register.html" class="btn-custom-success me-2">Зарегистрироваться</a>

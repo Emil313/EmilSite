@@ -16,9 +16,19 @@ body {
     font-weight: 700;
     font-size: 1.5rem;
     letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .navbar-brand span {
     color: #4a90d9;
+}
+/* Стили для логотипа-картинки */
+.logo-img {
+    height: 45px;
+    width: auto;
+    border-radius: 8px;
+    display: block;
 }
 .navbar .nav-link {
     color: #5a6a7a !important;
@@ -31,6 +41,12 @@ body {
 .navbar .nav-link:hover {
     color: #2c3e50 !important;
     background: #f0f2f5;
+}
+.navbar-toggler {
+    border-color: #d0d8e0;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(44, 62, 80, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* ===== ЗАГОЛОВКИ ===== */
@@ -50,6 +66,136 @@ h2 {
     color: #6a7a8a;
     font-size: 1.2rem;
     font-weight: 400;
+}
+
+/* ===== СЛАЙДЕР ===== */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    background: #ffffff;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.slider-slide {
+    min-width: 100%;
+    position: relative;
+    aspect-ratio: 16/7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.slider-slide .slide-content {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.slider-slide .slide-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.slider-slide .slide-content p {
+    font-size: 1.1rem;
+    color: #5a6a7a;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.slider-slide .slide-badge {
+    display: inline-block;
+    background: #4a90d9;
+    color: #ffffff;
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* Разные фоны для слайдов */
+.slider-slide:nth-child(1) {
+    background: linear-gradient(135deg, #e3eef9, #c5d9e8);
+}
+.slider-slide:nth-child(2) {
+    background: linear-gradient(135deg, #e6f5ed, #c5e8d9);
+}
+.slider-slide:nth-child(3) {
+    background: linear-gradient(135deg, #f0edf5, #d9d5e8);
+}
+
+/* Кнопки слайдера */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2c3e50;
+}
+.slider-btn:hover {
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transform: translateY(-50%) scale(1.05);
+}
+.slider-btn.prev {
+    left: 16px;
+}
+.slider-btn.next {
+    right: 16px;
+}
+
+/* Индикаторы слайдера */
+.slider-indicators {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+.slider-indicators .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    padding: 0;
+}
+.slider-indicators .dot.active {
+    background: #4a90d9;
+    width: 24px;
+    border-radius: 6px;
+}
+.slider-indicators .dot:hover {
+    background: rgba(255,255,255,0.8);
 }
 
 /* ===== КАРТОЧКИ ===== */
@@ -338,6 +484,7 @@ h2 {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.3rem; }
     .navbar-brand { font-size: 1.2rem; }
+    .logo-img { height: 35px; }
     
     .btn-custom-primary, 
     .btn-custom-success, 
@@ -352,6 +499,25 @@ h2 {
     .mt-4 .me-2 {
         margin-right: 0 !important;
     }
+
+    /* Слайдер на мобилках */
+    .slider-slide .slide-content h3 {
+        font-size: 1.3rem;
+    }
+    .slider-slide .slide-content p {
+        font-size: 0.9rem;
+    }
+    .slider-slide {
+        padding: 20px;
+        aspect-ratio: 16/9;
+    }
+    .slider-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    .slider-btn.prev { left: 8px; }
+    .slider-btn.next { right: 8px; }
     
     /* Страница заявок */
     .d-flex.justify-content-between {
@@ -374,4 +540,9 @@ h2 {
     .container { padding: 0 16px; }
     .card { border-radius: 12px; }
     .card-title { font-size: 1.3rem; }
+    .slider-slide .slide-content h3 { font-size: 1.1rem; }
+    .slider-slide .slide-content p { font-size: 0.8rem; }
+    .slider-slide .slide-badge { font-size: 0.7rem; padding: 4px 14px; }
+    .slider-container { margin: 15px auto; border-radius: 12px; }
+    .logo-img { height: 30px; }
 }
